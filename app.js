@@ -10,57 +10,24 @@ class Ship {
 }
 }
 const player = new Ship('USS_Assembly',20,5,.7)
+
 let remaining = 6
-let a1 = {}
-let a2 = {}
-let a3 = {}
-let a4 = {}
-let a5 = {}
-let a6 = {}
 
-function createAlienShip1(name,hull,firePower,accuracy) {
-    a1 = new Ship(name,hull,firePower,accuracy)
-    return a1
-}
-function createAlienShip2(name,hull,firePower,accuracy) {
-    a2 = new Ship(name,hull,firePower,accuracy)
-    return a2
-}
-function createAlienShip3(name,hull,firePower,accuracy) {
-    a3 = new Ship(name,hull,firePower,accuracy)
-    return a3
-}
-function createAlienShip4(name,hull,firePower,accuracy) {
-    a4 = new Ship(name,hull,firePower,accuracy)
-    return a4
-}
-function createAlienShip5(name,hull,firePower,accuracy) {
-    a5 = new Ship(name,hull,firePower,accuracy)
-    return a5
-}
-function createAlienShip6(name,hull,firePower,accuracy) {
-    a6 = new Ship(name,hull,firePower,accuracy)
-    return a6
+let alienShips = []
+function createShips(num) {
+    for(let i = 0; i < num; i++) {
+        alienShips[i] = new Ship(`Alien ${i + 1}`,3 + Math.floor(Math.random()*4),2 + Math.floor(Math.random()*3),.6 + Math.floor(Math.random()*3) / 10)
+    }
 }
 
-createAlienShip1('Alien 1',3 + Math.floor(Math.random()*4),2 + Math.floor(Math.random()*3),.6 + Math.floor(Math.random()*3) / 10)
-
-createAlienShip2('Alien 2',3 + Math.floor(Math.random()*4),2 + Math.floor(Math.random()*3),.6 + Math.floor(Math.random()*3) / 10)
-
-createAlienShip3('Alien 3',3 + Math.floor(Math.random()*4),2 + Math.floor(Math.random()*3),.6 + Math.floor(Math.random()*3) / 10)
-
-createAlienShip4('Alien 4',3 + Math.floor(Math.random()*4),2 + Math.floor(Math.random()*3),.6 + Math.floor(Math.random()*3) / 10)
-
-createAlienShip5('Alien 5',3 + Math.floor(Math.random()*4),2 + Math.floor(Math.random()*3),.6 + Math.floor(Math.random()*3) / 10)
-
-createAlienShip6('Alien 6',3 + Math.floor(Math.random()*4),2 + Math.floor(Math.random()*3),.6 + Math.floor(Math.random()*3) / 10)
+createShips(6)
 
 let firstLevel = prompt("Would you like to start the game? Y or N?")
 firstLevel = firstLevel.toUpperCase
-nextLevel = ''
+let nextLevel = ''
 
 function battleAlien(alien) {
-while (player.hull > 0 && alien.hull > 0 && nextLevel != 'N' && firstLevel != 'N') {
+while (player.hull > 0 && alien.hull > 0 && nextLevel !== 'N' && firstLevel !== 'N') {
     if (player.accuracy >= Math.random()) {
  alien.takeDamage(player.firePower)
     console.log(`You did ${player.firePower} damage to the enemy ship! ${alien.name} has ${alien.hull} hitpoints left.`)
@@ -89,14 +56,15 @@ while (player.hull > 0 && alien.hull > 0 && nextLevel != 'N' && firstLevel != 'N
         console.log(`The Earth has been saved from the Alien threat!
         You Win!`)
     }
-    if (nextLevel == 'N') {
+    if (nextLevel === 'N') {
         console.log("Game Over")
+        break
     }
 }
 }
-battleAlien(a1)
-battleAlien(a2)
-battleAlien(a3)
-battleAlien(a4)
-battleAlien(a5)
-battleAlien(a6)
+battleAlien(alienShips[0])
+battleAlien(alienShips[1])
+battleAlien(alienShips[2])
+battleAlien(alienShips[3])
+battleAlien(alienShips[4])
+battleAlien(alienShips[5])
