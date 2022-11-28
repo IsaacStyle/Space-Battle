@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./app.js"></script>
+</head>
+<body>
+    
+</body>
+</html>
+
+class Ship {
+    constructor(name,hull,firePower,accuracy) {
+        this.name = name
+        this.hull = hull
+        this.firePower = firePower
+        this.accuracy = accuracy
+    }
+    takeDamage(num) {
+        return hull -= num;
+}
+}
+const player = new Ship('USS_Assembly',20,5,.7)
+let a1 = {}
+let a2 = {}
+let a3 = {}
+let a4 = {}
+let a5 = {}
+let a6 = {}
+function createAlienShip1(alien) {
+    alien = new Ship('alien',3 + Math.floor(Math.random()*4),2 + Math.floor(Math.random()*3),.6 + Math.floor(Math.random()*3) / 10)
+    return alien
+}
+
+createAlienShip1(a1)
+
+console.log(a1)
