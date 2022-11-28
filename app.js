@@ -23,11 +23,12 @@ function createShips(num) {
 createShips(6)
 
 let firstLevel = prompt("Would you like to start the game? Y or N?")
-firstLevel = firstLevel.toUpperCase
+console.log(firstLevel)
+
 let nextLevel = ''
 
 function battleAlien(alien) {
-while (player.hull > 0 && alien.hull > 0 && nextLevel !== 'N' && firstLevel !== 'N') {
+while (player.hull > 0 && alien.hull > 0 && nextLevel != 'N' && firstLevel != 'N') {
     if (player.accuracy >= Math.random()) {
  alien.takeDamage(player.firePower)
     console.log(`You did ${player.firePower} damage to the enemy ship! ${alien.name} has ${alien.hull} hitpoints left.`)
@@ -49,7 +50,8 @@ while (player.hull > 0 && alien.hull > 0 && nextLevel !== 'N' && firstLevel !== 
         ${remaining -= 1} to go!`)
         if (remaining !== 0) {
             nextLevel = prompt("Would you like to continue or retreat? Y to continue or N to retreat?")
-        nextLevel = nextLevel.toUpperCase
+            
+
         }
     } 
     if (remaining === 0) {
