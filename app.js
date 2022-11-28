@@ -55,8 +55,12 @@ createAlienShip5('Alien 5',3 + Math.floor(Math.random()*4),2 + Math.floor(Math.r
 
 createAlienShip6('Alien 6',3 + Math.floor(Math.random()*4),2 + Math.floor(Math.random()*3),.6 + Math.floor(Math.random()*3) / 10)
 
+let firstLevel = prompt("Would you like to start the game? Y or N?")
+firstLevel = firstLevel.toUpperCase
+nextLevel = ''
+
 function battleAlien(alien) {
-while (player.hull > 0 && alien.hull > 0) {
+while (player.hull > 0 && alien.hull > 0 && nextLevel != 'N' && firstLevel != 'N') {
     if (player.accuracy >= Math.random()) {
  alien.takeDamage(player.firePower)
     console.log(`You did ${player.firePower} damage to the enemy ship! ${alien.name} has ${alien.hull} hitpoints left.`)
@@ -76,7 +80,23 @@ while (player.hull > 0 && alien.hull > 0) {
     if (alien.hull <= 0) {
         console.log(`You've sent ${alien.name} to their doom. 
         ${remaining -= 1} to go!`)
+        if (remaining !== 0) {
+            nextLevel = prompt("Would you like to continue or retreat? Y to continue or N to retreat?")
+        nextLevel = nextLevel.toUpperCase
+        }
+    } 
+    if (remaining === 0) {
+        console.log(`The Earth has been saved from the Alien threat!
+        You Win!`)
+    }
+    if (nextLevel == 'N') {
+        console.log("Game Over")
     }
 }
 }
 battleAlien(a1)
+battleAlien(a2)
+battleAlien(a3)
+battleAlien(a4)
+battleAlien(a5)
+battleAlien(a6)
